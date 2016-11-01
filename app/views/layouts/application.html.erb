@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Desoftco</title>
+    <%= csrf_meta_tags %>
+    <!-- Bootstrao 4 alpha4 -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">-->
+    <!-- Flexbox grid -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css">
+    <!-- Style shets -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Javascript => Assets -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Theter -->
+    <!--<script src="assets/javascript/tether.min.js"></script>-->
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <!-- Font Awesome => Icons -->
+    <script src="https://use.fontawesome.com/04b4961747.js"></script>
+  </head>
+
+  <body>
+    <!--<div id="global-snackbar" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>-->
+    <p class="large-padding red white-text text-center no-margin" style="<%= 'display: none;' if notice.nil? && alert.nil? %>">
+      <%= notice %><%= alert %>
+      <span style="float: right;" class="close-parent">X</span>
+    </p>
+    <header class="navbar navbar-full navbar-dark bg-primary navbar-static-top bd-navbar ">
+      <div class="container">
+        <%= render "partials/nav" %>
+      </div>
+    </header>
+      <main id="main-content" class="full-height">
+        <%= yield %>
+      </main>
+      <!-- Snackbar -->
+      <div id="snackbar"></div>
+  </body>
+</html>

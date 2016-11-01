@@ -1,0 +1,1 @@
+$("#friendRequest-<%= @user.id %>").remove()

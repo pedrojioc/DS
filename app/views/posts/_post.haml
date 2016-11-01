@@ -1,0 +1,17 @@
+.content-post.shadow
+  %table
+    %tr
+      %td
+        =circle_img post.user.avatar.url(:thumb),50
+      %td.padding-left{style:"vertical-align: top;"}
+        =link_to post.user.name, post.user
+        %table
+          %tr
+            %td
+              =post.body
+  .top-space.border-top
+    %table
+      %tr
+        %td
+          %div{:id => "buttonLike-#{post.id}"}
+            =render(partial: "likes/button_like", locals: {post: post})

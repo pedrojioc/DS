@@ -1,0 +1,23 @@
+I"ˆ(function() {
+  window.snack = function(options) {
+    console.log("Working");
+    return document.querySelector("#global-snackbar").MaterialSnackbar.showSnackbar(options);
+  };
+
+  window.loading = false;
+
+  $(document).on("page:load page:fetch ready", function() {
+    console.log("It works on each visit!");
+    $(".best_in_place").best_in_place();
+    return $(".mdl-layout").scroll(function() {
+      var url;
+      url = $(".next_page").attr("href");
+      if (!window.loading && $(".mdl-layout").scrollTop() > $(document).height() - 100) {
+        window.loading = true;
+        return $.getScript(url);
+      }
+    });
+  });
+
+}).call(this);
+:ET

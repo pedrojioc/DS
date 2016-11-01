@@ -1,0 +1,12 @@
+.row.center-xs
+	.col-xs-10.col-md-8
+		.box
+			.white.large-padding
+				.border-bottom.padding-bottom
+					%p.text-left Solicitudes de Amistades
+					%ul.list-group
+						=render @pending_friendships
+				.top-space
+					%p.text-left Solicitudes enviadas
+					%ul.list-group
+					=render @pending_requests

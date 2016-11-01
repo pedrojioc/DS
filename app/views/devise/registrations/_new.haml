@@ -1,0 +1,23 @@
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+	= devise_error_messages!
+	.form-group
+		= f.label :email, for:"", class:"sr-only"
+		= f.email_field :email, autofocus: true, class: "form-control",placeholder:"Email", required: true
+	.form-group
+		= f.label :name, for:"", class:"sr-only"
+		= f.text_field :name, class: "form-control", placeholder:"Nombre completo", required: true
+	.form-group
+		= f.label :password, class:"sr-only"
+		= f.password_field :password, class: "form-control", placeholder:"Contraseña"
+	.form-group
+		= f.label :password_confirmation, class:"sr-only"
+		= f.password_field :password_confirmation, class: "form-control", placeholder:"Confirmar Contraseña"
+	.form-group
+		= f.label :username, class:"sr-only"
+		= f.text_field :username, class: "form-control", placeholder:"Nombre de usuario"
+	.top-sapce
+		%div.row
+			.col-xs-4
+				= f.submit "Registrarme",class: "btn btn-primary"
+			.col-xs-5
+				= link_to "Ya tengo cuenta", new_user_session_path,class:"btn btn-secondary"

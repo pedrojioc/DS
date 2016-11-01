@@ -1,0 +1,13 @@
+I"ã(function() {
+  window.App || (window.App = {});
+
+  App.init = function() {
+    return console.log("It works on each visit!");
+  };
+
+  $(document).on("turbolinks:load", function() {
+    return App.init();
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title Desoftco
+    = csrf_meta_tags
+    /%link{rel:"stylesheet", href:"https://cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css"}
+    %link{rel:"stylesheet", href:"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css", integrity:"sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj", crossorigin:"anonymous"}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %script{defer:true, src:"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js", integrity:"sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK", crossorigin:"anonymous"}
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+  %body
+    %p{style:"#{'display: none;' if notice.nil? && alert.nil?}"}
+      = notice
+      = alert
+    = yield

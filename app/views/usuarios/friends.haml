@@ -1,0 +1,9 @@
+.top-space
+  .row.center-xs
+    .col-lg-10.small-padding.white.card
+      .row
+        -@friends.each do |friend|
+          .col-xs-12.col-sm-10.col-md-6.col-lg-3
+            =circle_img friend.avatar.url(:medium), 150
+            .small-padding
+              %b=link_to friend.name, friend

@@ -1,0 +1,13 @@
+%li.list-group-item
+	%table
+		%tr
+			%td
+				=circle_img notification.item.user.avatar.url(:thumb),30
+			%td.padding-left
+				%b
+					=notification.item.user.name
+			%td
+				Creó una nueva publicación
+			%td.padding-left
+				=link_to notification_path(id: notification.id, notification:{viewed: true}), method: :put do
+					%i.fa.fa-check.fa-lg.text-success{:"aria-hidden" => :true}

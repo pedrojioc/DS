@@ -1,0 +1,16 @@
+I"°(function() {
+  window.snack = function(options) {
+    console.log("Working");
+    return document.querySelector("#global-snackbar").MaterialSnackbar.showSnackbar(options);
+  };
+
+  $(document).on("page:load page:fetch ready", function() {
+    console.log("It works on each visit!");
+    $(".best_in_place").best_in_place();
+    return $("*").scroll(function() {
+      return console.log(event.target);
+    });
+  });
+
+}).call(this);
+:ET

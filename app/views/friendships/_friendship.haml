@@ -1,0 +1,12 @@
+%li.list-group-item{:id => :"friendRequest-#{friendship.user.id}"}
+	.row.middle-xs
+		.col-xs-2.col-md-1
+			.box
+				=circle_img friendship.user_view.avatar.url(:thumb), 50
+		.col-xs-6.text-left
+			.box
+				%b=friendship.user_view.name
+		.col-xs-4
+			.box
+				.row
+					=friendship.status_or_buttons
