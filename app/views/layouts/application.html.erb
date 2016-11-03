@@ -39,4 +39,10 @@
       <!-- Snackbar -->
       <div id="snackbar"></div>
   </body>
+  <script>
+    var ncount = <%=current_user.unviewed_notifications_count%>
+    if (ncount > 0) {
+      $("#notification").removeClass("invisible");
+    }
+  </script>
 </html>

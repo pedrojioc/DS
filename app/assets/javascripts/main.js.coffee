@@ -22,6 +22,7 @@ $(document).on "page:load page:fetch ready", ()->
 	$(".close-parent").on "click", (ev)->
 		$(this).parent().slideUp()
 
+	###
 	$("#notification").on "click", (ev)->
 		#Si las notificaiones son visibles, preventDefault()
 		ev.preventDefault() if $("#notifications").hasClass("active")
@@ -32,6 +33,7 @@ $(document).on "page:load page:fetch ready", ()->
 		#Si tiene la clase active, es porque antes no la tenia
 		#Si no la tiene, es porque antes si la tenia
 		return $("#notifications").hasClass("active")
+	###
 
 	$(".best_in_place").best_in_place()
 	$(window).scroll ->

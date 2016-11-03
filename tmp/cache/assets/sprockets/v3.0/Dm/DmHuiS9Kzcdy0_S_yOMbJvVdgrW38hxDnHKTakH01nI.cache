@@ -1,0 +1,13 @@
+I"C(function() {
+  App.notification = App.cable.subscriptions.create("NotificationChannel", {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      if (data.action === "new_notification") {
+        return $("#notification").html(data.message);
+      }
+    }
+  });
+
+}).call(this);
+:ET

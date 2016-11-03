@@ -11,6 +11,7 @@
 #
 
 class Like < ApplicationRecord
+  include Notificable
   belongs_to :user
   belongs_to :item, polymorphic: true
 

@@ -9,10 +9,12 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
-  include Notificable
-  
+  #include Notificable
+
   #Relación => Pertenece a un usuario
   belongs_to :user
+  #Relación => Tiene muchos likes
+  has_many :likes, foreign_key: :item_id
   scope :nuevos, ->{ order("created_at desc") }
   after_create :send_to_acction_cable
 

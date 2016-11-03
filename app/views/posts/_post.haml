@@ -15,3 +15,5 @@
         %td
           %div{:id => "buttonLike-#{post.id}"}
             =render(partial: "likes/button_like", locals: {post: post})
+        %td{style:"padding-left:0.5em;"}
+          %p.text-muted.no-margin{style:"font-size:0.9em;"}=post.likes.count

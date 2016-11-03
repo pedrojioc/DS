@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :user_in
   protected
 	def set_layout
+    if devise_controller? && resource_name == :user && action_name == 'new'
+      "landing"
+    else
 		"application"
+    end
 	end
 
 	def configure_permitted_parameters

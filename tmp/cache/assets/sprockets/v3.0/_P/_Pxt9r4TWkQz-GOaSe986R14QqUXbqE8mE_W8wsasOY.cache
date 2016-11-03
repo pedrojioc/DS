@@ -1,0 +1,60 @@
+I"(function() {
+  var ncount;
+
+  window.snack = function(message, time) {
+    var x;
+    $("#buttonAdd").html("");
+    x = $("#snackbar");
+    x.html(message);
+    x.addClass("show");
+    setTimeout(function() {
+      return x.removeClass("show");
+    }, time);
+    return console.log("Working");
+  };
+
+  window.loading = false;
+
+  ncount = 0;
+
+  $(document).on("page:load", function() {
+    console.log("Solo al cargar");
+    if (ncount === 0) {
+      return $("#notification").removeClass("invisible");
+    }
+  });
+
+  $(document).on("page:load page:fetch ready", function() {
+    console.log("It works on each visit!");
+    $(".close-parent").on("click", function(ev) {
+      return $(this).parent().slideUp();
+    });
+
+    /*
+    	$("#notification").on "click", (ev)->
+    		#Si las notificaiones son visibles, preventDefault()
+    		ev.preventDefault() if $("#notifications").hasClass("active")
+    
+    		#Agregamos o removemos la clase
+    		$("#notifications").toggleClass("active")
+    
+    		#Si tiene la clase active, es porque antes no la tenia
+    		#Si no la tiene, es porque antes si la tenia
+    		return $("#notifications").hasClass("active")
+     */
+    $(".best_in_place").best_in_place();
+    return $(window).scroll(function() {
+      var url;
+      if (!window.loading && $(window).scrollTop() > $(document).height() - 850) {
+        console.log("entro");
+        window.loading = true;
+        url = $(".next_page").attr("href");
+        if (url) {
+          return $.getScript(url);
+        }
+      }
+    });
+  });
+
+}).call(this);
+:ET

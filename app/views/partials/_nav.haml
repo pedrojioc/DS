@@ -5,17 +5,17 @@
       -if user_signed_in?
         %li.nav-item
           /#notifications.shadow
-          =link_to "notifications", class:"nav-link", id:"notification" do
-            =#current_user.unviewed_notifications_count
-            %i.fa.fa-bell.fa-1x{:"aria-hidden" => :true}
-            Notificaciones
-            %span.tag.tag-danger 1
+          .relative
+            =link_to notifications_path, class:"nav-link", id:"" do
+              %i.fa.fa-bell.fa-1x{:"aria-hidden" => :true}
+              Notificaciones
+              %span#notification.invisible.tag.tag-danger.my-badge=current_user.unviewed_notifications_count
           %li.nav-item
             =link_to "friendships", class:"nav-link" do
               %i.fa.fa-users.fa-1x{:"aria-hidden" => :true}
               Solicitudes
           %li.nav-item.dropdown
-            #config-account.nav-link.dropdown-toggle.cover.rounded{:"data-toggle" => :dropdown, :"aria-haspopup" => :true, :"aria-expanded" => :false, style:"background-image: url(#{current_user.avatar.url(:thumb)});width:35px;height:35px;"}
+            #config-account.nav-link.dropdown-toggle.cover.rounded{:"data-toggle" => :dropdown, :"aria-haspopup" => :true, :"aria-expanded" => :false, style:"background-image: url(#{current_user.avatar.url(:thumb)});width:30px;height:30px;"}
             %ul.dropdown-menu.dropdown-menu-right{:"aria-labelledby" => :"config-account"}
               %li.dropdown-item
                 =link_to "Ver mi perfil", current_user, class:"dropdown-item"

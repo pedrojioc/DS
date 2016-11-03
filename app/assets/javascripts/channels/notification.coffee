@@ -7,8 +7,5 @@ App.notification = App.cable.subscriptions.create "NotificationChannel",
 
   received: (data) ->
     if data.action == "new_notification"
-        snack(
-            message: "Nueva notificación!",
-            timeout: 4000
-        )
+        $("#notification").removeClass("invisible")
         $("#notification").html(data.message)
