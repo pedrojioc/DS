@@ -51,6 +51,8 @@ gem 'will_paginate'
 gem 'sidekiq'
 #Sinatra
 gem 'sinatra', github:"sinatra/sinatra", require: nil
+#Jquery-UI
+gem 'jquery-ui-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

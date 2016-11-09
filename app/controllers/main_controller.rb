@@ -7,7 +7,6 @@ class MainController < ApplicationController
     respond_to do |format|
       @post = Post.new
       @posts = Post.all_for_user(current_user).nuevos.paginate(page:params[:page], per_page:15)
-
       format.html { }
       format.js { }
     end

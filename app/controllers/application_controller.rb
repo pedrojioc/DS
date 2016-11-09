@@ -16,9 +16,11 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :name])
 	end
 
+  #Cargamos las variables globales
 	def user_in
 		if user_signed_in?
 			@user_act = current_user
+      @friend_request = Friendship.pending_for_user(current_user).count
 		end
 	end
 end

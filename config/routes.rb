@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   }
   post "/custom_sign_up", to: "users/omniauth_callbacks#custom_sign_up"
 
+  get "/search", to: "usuarios#search"
+
 
   authenticated :user do
   	root 'main#home'

@@ -15,8 +15,9 @@
     <!--<script src="assets/javascript/tether.min.js"></script>-->
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-    <!-- Font Awesome => Icons -->
+    <!-- Font Awesome => Icons
     <script src="https://use.fontawesome.com/04b4961747.js"></script>
+    -->
   </head>
 
   <body>
@@ -24,25 +25,36 @@
       <div class="mdl-snackbar__text"></div>
       <button class="mdl-snackbar__action" type="button"></button>
     </div>-->
-    <p class="large-padding red white-text text-center no-margin" style="<%= 'display: none;' if notice.nil? && alert.nil? %>">
+    <!--<p class="large-padding red white-text text-center no-margin" style="<%= 'display: none;' if notice.nil? && alert.nil? %>">
       <%= notice %><%= alert %>
       <span style="float: right;" class="close-parent">X</span>
-    </p>
-    <header class="navbar navbar-full navbar-dark bg-primary navbar-static-top bd-navbar ">
+    </p>-->
+    <header class="navbar navbar-full navbar-dark bg-primary navbar-static-top navbar-fixed-top bd-navbar ">
       <div class="container">
         <%= render "partials/nav" %>
       </div>
     </header>
-      <main id="main-content" class="full-height">
+      <main id="main-content" class="full-height container-fluid">
+        <div class="row center-xs contenedor">
+          <div class="col-xs-6">
+            <%= flash_messages %>
+          </div>
+        </div>
         <%= yield %>
       </main>
       <!-- Snackbar -->
       <div id="snackbar"></div>
   </body>
   <script>
-    var ncount = <%=current_user.unviewed_notifications_count%>
-    if (ncount > 0) {
-      $("#notification").removeClass("invisible");
-    }
+  /*
+  window.notification_count = <%=current_user.unviewed_notifications_count%>
+  window.friendships_count = <%=@friend_request%>
+  if (notification_count > 0) {
+    $("#notification").removeClass("invisible");
+  }
+  if (friendships_count > 0) {
+    $("#friendships").removeClass("invisible");
+  }
+  */
   </script>
 </html>

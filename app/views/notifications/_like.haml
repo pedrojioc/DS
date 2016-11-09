@@ -1,4 +1,4 @@
-%li.list-group-item
+%li.list-group-item{:id => "notification-#{notification.id}"}
 	%table
 		%tr
 			%td
@@ -11,5 +11,5 @@
 				Le gusta tu
 				=notification.item.item_type
 			%td.padding-left
-				=link_to notification_path(id: notification.id, notification:{viewed: true}), method: :put do
+				=link_to notification_path(id: notification.id, notification:{viewed: true}), remote: true, method: :put do
 					%i.fa.fa-check.fa-lg.text-success{:"aria-hidden" => :true}

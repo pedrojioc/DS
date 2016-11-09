@@ -2,7 +2,8 @@ module Notificable
 	extend ActiveSupport::Concern
 	included do
 		has_many :notifications, as: :item
-		after_commit :send_notification_to_users
+		after_create_commit :send_notification_to_users
+		after_destroy_commit :delete_notificatio_of_users
 	end
 
 	def send_notification_to_users
@@ -13,5 +14,12 @@ module Notificable
 		#raise origin_item.inspect
 		#JOB => mandar notificaciones async
 		NotificationSenderJob.perform_later(self, origin_item)
+	end
+
+	#Se ejecuta cuando un usuario hace unlike
+	def delete_notificatio_of_users
+		raise self.inspect
+		notification = Notification.find_by(item_type:self.class.name, item_id:self.id)
+    DeleteNotificationJob.perform_later notification
 	end
 end

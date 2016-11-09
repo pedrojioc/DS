@@ -1,4 +1,4 @@
-.content-post.shadow
+.content-post
   %table
     %tr
       %td
@@ -14,6 +14,7 @@
       %tr
         %td
           %div{:id => "buttonLike-#{post.id}"}
-            =render(partial: "likes/button_like", locals: {post: post})
+            =button_like post, @user_act
         %td{style:"padding-left:0.5em;"}
-          %p.text-muted.no-margin{style:"font-size:0.9em;"}=post.likes.count
+          %p.text-muted.no-margin{:id=>"countLike-#{post.id}", style:"font-size:0.9em;"}
+            =post.likes.count

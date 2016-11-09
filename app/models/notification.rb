@@ -14,7 +14,7 @@
 class Notification < ApplicationRecord
   belongs_to :user
   belongs_to :item, polymorphic: true
-  after_commit { NotificationBroadcastJob.perform_later(self) }
+  after_create_commit { NotificationBroadcastJob.perform_later(self) }
   scope :unviewed, ->{ where(viewed:false) }
   scope :latest, ->{ order("created_at desc").limit(10) }
 

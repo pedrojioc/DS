@@ -1,0 +1,18 @@
+I"(function() {
+  App.notification = App.cable.subscriptions.create("NotificationChannel", {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      if (data.action === "new_notification") {
+        $("#notification").html(data.message);
+        $("#notification").css("visibility", "visible");
+      }
+      if (data.action === "new_friend_request") {
+        $("#friendships").html(data.message);
+        return $("#friendships").css("visibility", "visible");
+      }
+    }
+  });
+
+}).call(this);
+:ET

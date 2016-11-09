@@ -9,12 +9,14 @@ class NotificationsController < ApplicationController
 
   def update
   	@notification = Notification.find(params[:id])
-  	message = if @notification.update(notification_params)
-  		"Notificación vista"
-  	else
-  		"Hubo un error"
-  	end
-  	redirect_to :back, notice: message
+    respond_to do |format|
+    	if @notification.update(notification_params)
+    		format.html { redirect_to :back, notice: "Notificación marcada." }
+        format.js {  }
+    	else
+    		format.html { redirect_to :back, error: "Ocurrio un error :(" }
+    	end
+    end
   end
 
   private

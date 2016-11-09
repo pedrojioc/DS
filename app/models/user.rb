@@ -103,6 +103,10 @@ class User < ApplicationRecord
     friends
 	end
 
+  def self.search(name)
+    where("LOWER(name) LIKE :name", name: "#{name.downcase}")
+  end
+
   private
   def validate_username_regex
     unless username =~ /\A[a-zA-Z]*[a-zA-Z][a-zA-Z0-9_]*\z/

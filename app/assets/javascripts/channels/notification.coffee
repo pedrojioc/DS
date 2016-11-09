@@ -7,5 +7,9 @@ App.notification = App.cable.subscriptions.create "NotificationChannel",
 
   received: (data) ->
     if data.action == "new_notification"
-        $("#notification").removeClass("invisible")
         $("#notification").html(data.message)
+        $("#notification").css("visibility", "visible")
+    #Recibe las respuestas de una nueva solicitud de amistad
+    if data.action == "new_friend_request"
+      $("#friendships").html(data.message)
+      $("#friendships").css("visibility", "visible")
