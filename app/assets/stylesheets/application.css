@@ -14,5 +14,6 @@
  *= require common
  *= require main
  *= require Bootstrap/bootstrap.min
+ *= require icons/font-awesome.min
  *= require_self
  */
