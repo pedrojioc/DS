@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DS en un proyecto que emula una red social en su fase básica, el proposito de este es servir de referencia a personas que se incian en el mundo de Rails, ya que de el se puede tomar muchas funcionalidades, para implementar en sus aplicaciones propias.
 
-Things you may want to cover:
+* Ruby version: 5.0.1
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* System dependencies: Redis 3.2.4 >=, sidekiq.
