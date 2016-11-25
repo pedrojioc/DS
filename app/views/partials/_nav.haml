@@ -23,6 +23,17 @@
               =link_to "Ver mi perfil", current_user, class:"dropdown-item"
             %li.dropdown-item
               =link_to "Cerrar sesión", destroy_user_session_path, method: :delete,class:"dropdown-item"
-    %form.row.center-xs
+
+    =form_tag({controller:"search_people", action:"search"}, method:"get", class:"row", id:"form-search") do
       .col-xs-6.col-sm-7.col-md-8.col-lg-8
-        %input.form-control{type:"text", placeholder:"Buscar personas"}
+        %table.full-width
+          %tr
+            %td
+              /%input#search.form-control{type:"text", placeholder:"Buscar personas"}
+              =text_field_tag "search", nil, name:"term", class:"form-control", placeholder:"Buscar personas"
+              /Aquí van las sugerencias de busqueda
+              .full-width.relative
+                .list-group.full-width.absolute#result
+            %td
+              %a{href:"javascript:{}", onclick:"document.getElementById('form-search').submit(); return false;"}
+                %i.fa.fa-search.text-white{:"aria-hidden" => :true}

@@ -52,6 +52,15 @@
 					= f.file_field :cover, class:"remotipart"
 
 
+.row.center-xs
+	.col-xs-12.col-sm-10.col-md-10.col-lg-8
+		.box.text-left
+			=render @posts
+	
+		#pagination
+			=will_paginate @posts
+
+
 
 
 

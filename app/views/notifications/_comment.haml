@@ -1,0 +1,13 @@
+%li.list-group-item{:id => "notification-#{notification.id}"}
+	%table.text-space
+		%tr
+			%td
+				=circle_img notification.item.user.avatar.url(:thumb),30
+			%td.padding-left
+				%b=link_to notification.item.user.name, notification.item.user
+			%td
+				comento tu
+				=notification.item.item_type
+			%td.padding-left
+				=link_to notification_path(id: notification.id, notification:{viewed: true}), remote: true, method: :put do
+					%i.fa.fa-check.fa-lg.text-success{:"aria-hidden" => :true}

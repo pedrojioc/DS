@@ -14,7 +14,9 @@
 //= require jquery.turbolinks
 //= require best_in_place
 //= require jquery_ujs
+//= require jquery-ui
 //=require jquery.remotipart
+//= require moment
 //= require best_in_place.jquery-ui
 //= require turbolinks
 //= require turbolinks-compatibility

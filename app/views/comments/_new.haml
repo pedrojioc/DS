@@ -1,0 +1,5 @@
+=form_for Comment.new, remote: true do |f|
+	.form-group
+		=f.text_field(:body, class:"form-control", placeholder: "Escribe un comentario", "data-input-comment-id" => item.id)
+	=f.hidden_field(:item_type, value: item.class.name)
+	=f.hidden_field(:item_id, value: item.id)

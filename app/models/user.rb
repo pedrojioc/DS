@@ -47,6 +47,7 @@ class User < ApplicationRecord
 
   has_many :friends_added, through: :friendships, source: :friend
   has_many :friends_who_added, through: :friendships, source: :user
+  has_many :comments
 
   has_attached_file :avatar, styles: {thumb: "100x100", medium:"300x300"}, default_url:"/images/:style/missing.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
@@ -103,8 +104,16 @@ class User < ApplicationRecord
     friends
 	end
 
-  def self.search(name)
-    where("LOWER(name) LIKE :name", name: "#{name.downcase}")
+  #Devuelve una sugerencia de las personas buscadas (PUEDE QUE ESTE NO SEA SU LUGAR)
+  def self.terms_for(term)
+    Rails.cache.fetch(["search-terms", name]) do
+      #where("name like ?", "#{name}%").limit(10).pluck(:name)
+      where("LOWER(name) LIKE :term ", term: "#{term.downcase}%").limit(10)
+    end
+  end
+
+  def self.count_likes_for_user(user_id)
+    Like.joins("INNER JOIN posts ON posts.id = item_id").where("posts.user_id = #{user_id}").count
   end
 
   private

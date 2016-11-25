@@ -7,6 +7,8 @@ class MainController < ApplicationController
     respond_to do |format|
       @post = Post.new
       @posts = Post.all_for_user(current_user).nuevos.paginate(page:params[:page], per_page:15)
+      @count_likes = User.count_likes_for_user(current_user.id)
+      @comment = Comment.new
       format.html { }
       format.js { }
     end
