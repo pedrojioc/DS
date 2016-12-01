@@ -56,7 +56,7 @@ gem 'jquery-ui-rails'
 #
 #gem 'rack-mini-profiler'
 #Moments js
-gem 'momentjs-rails', '~> 2.15', '>= 2.15.1'
+#gem 'momentjs-rails', '~> 2.15', '>= 2.15.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

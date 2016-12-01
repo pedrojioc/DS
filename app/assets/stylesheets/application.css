@@ -15,5 +15,6 @@
  *= require main
  *= require Bootstrap/bootstrap.min
  *= require icons/font-awesome.min
+ *= require startui/profile-2.min
  *= require_self
  */

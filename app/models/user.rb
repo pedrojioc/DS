@@ -44,6 +44,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :friendships
   has_many :followers, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :followed, class_name: "Friendship", foreign_key: "user_id"
 
   has_many :friends_added, through: :friendships, source: :friend
   has_many :friends_who_added, through: :friendships, source: :user

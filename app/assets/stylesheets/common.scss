@@ -100,6 +100,7 @@ html, body{
 	border-radius: 1%;
 }
 #config-account{
+	margin-top: 3px;
 	&:hover{
 		cursor: pointer;
 	}
@@ -144,6 +145,9 @@ html, body{
 	vertical-align: baseline;
 	border-radius: 50% !important;
 }
-.no-line:link, .no-line:visited{  
+.no-line:link, .no-line:visited{
 	text-decoration:none !important;
+}
+.hover-white:hover{
+	color: white;
 }
