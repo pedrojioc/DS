@@ -1,9 +1,0 @@
-I"µ(function() {
-  $(document).on("click", ".file-activate", function(ev) {
-    var selector;
-    selector = $(this).attr("for");
-    return $(selector).click();
-  });
-
-}).call(this);
-:ET

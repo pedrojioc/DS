@@ -1,14 +1,0 @@
-I"(function() {
-  window.App || (window.App = {});
-
-  App.init = function() {
-    console.log("It works on each visit!");
-    return $(".best-in-place").best_in_place();
-  };
-
-  $(document).on("turbolinks:load", function() {
-    return App.init();
-  });
-
-}).call(this);
-:ET
