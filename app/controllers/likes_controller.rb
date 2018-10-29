@@ -1,14 +1,19 @@
 class LikesController < ApplicationController
 	before_action :set_like, only: [:destroy]
+	#La variable origin, contiene el origen de donde se desencadena el Like, puede ser un post
+	#o un comentario
 
-
+	def new
+		@like = current_user.likes.new
+	end
 	def create
 		@like = current_user.likes.new(likes_params)
-		@post = Post.get_post likes_params[:item_id]
+		@origin_id = likes_params[:item_id]
+		@origin = Object.const_get(likes_params[:item_type]).find(likes_params[:item_id])
 		respond_to do |format|
 			if @like.save
 				format.html { redirect_to "http://localhost:3000/", notice:"Like exitoso"}
-				format.js { render :show }
+				format.js { }
 			else
 				format.html { redirect_to "http://localhost:3000/", notice: 'Ocurrio un error' }
 				format.json { render json: @like.errors, status: :unprocessable_entity }
@@ -18,11 +23,12 @@ class LikesController < ApplicationController
 	end
 
 	def destroy
-		@post =  Post.get_post @like.item_id
+		#Se obtiene el origen del like que se esta eliminando
+		@origin = Object.const_get(@like.item_type).find(@like.item_id)
 		@like.destroy
 		respond_to do |format|
 			format.html { redirect_to "http://localhost:3000/", notice:"Like eliminado" }
-			format.js { render :show }
+			format.js { }
 		end
 	end
 

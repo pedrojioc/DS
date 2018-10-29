@@ -26,6 +26,9 @@ html, body{
 	padding-top: 10em;
 	padding-bottom: 10em;
 }
+.padding-cover-medium{
+	padding-bottom: 10em;
+}
 .large-padding{
 	padding: 10px 15px;
 }
@@ -47,11 +50,17 @@ html, body{
 .small-padding{
 	padding: 1em 1em 1em 1em;
 }
+.border{
+	border: 1px solid #c5d0d5;
+}
 .border-top{
 	border-top: 1px solid #c5d0d5;
 }
 .border-bottom{
 	border-bottom:1px solid #c5d0d5;
+}
+.border-top-min{
+	border-top: 0.5px solid #CBCBCB;
 }
 .full-width{
 	width: 100%;
@@ -81,6 +90,9 @@ html, body{
 .text-center{
 	text-align: center;
 }
+.text-space{
+	letter-spacing: 1px;
+}
 .circle{
 	border-radius: 3%;
 }
@@ -88,17 +100,16 @@ html, body{
 	border-radius: 1%;
 }
 #config-account{
+	margin-top: 3px;
 	&:hover{
 		cursor: pointer;
 	}
 }
 .content-post{
-	margin-top: 0.5em;
-	padding-top: 0.8em;
-	padding-left: 1em;
-	padding-bottom: 1em;
+	padding: 1em;
 	background: white;
-	border-bottom: 1px solid #c9d5d5;
+	border: 1px solid #c9d5d5;
+	border-bottom: 0px;
 }
 #user-avatar{
 	position: absolute;
@@ -115,12 +126,28 @@ html, body{
 		background-color: rgba(0, 0, 0, 0.4);
 	}
 }
-.shadow{
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.zone-0{
+	margin-top: 1em;
+	padding: 0.5em;
 }
 .my-badge{
 	position: absolute;
 	top: 0px;
-	left: 10px;
+	left: -8px;
+	display: inline-block;
+	padding: .25em .4em;
+	font-size: 75%;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
 	border-radius: 50% !important;
+}
+.no-line:link, .no-line:visited{
+	text-decoration:none !important;
+}
+.hover-white:hover{
+	color: white;
 }

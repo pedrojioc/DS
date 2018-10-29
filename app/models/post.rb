@@ -15,6 +15,8 @@ class Post < ApplicationRecord
   belongs_to :user
   #Relación => Tiene muchos likes
   has_many :likes, foreign_key: :item_id
+  #Relación => Tiene muchos comentarios
+  has_many :comments, foreign_key: :item_id
   scope :nuevos, ->{ order("created_at desc") }
   after_create :send_to_acction_cable
 

@@ -1,20 +1,32 @@
 .top-space
-	.row
-		.col-xs-12.col-sm-12.col-md-8.col-lg-10
-			.box
-				.row
-					.col-lg-2.col-sm-3.col-xs-10
-						.box
-							%ul.remove-bullet-points.text-left
-								%li=link_to "Explorar", "#"
-								%li=link_to "Sugerencias", "#"
-								
-					.col-xs-12.col-sm-12.col-md-8.col-lg-10
-						.box
-							.white.large-padding.shadow
-								=render "posts/form"
-							#posts
-								.data
-									=render @posts
-								#pagination
-									=will_paginate @posts
+  .row
+    .col-xs-12.col-sm-12.col-md-8.col-lg-10
+      .box
+        .row
+          .col-lg-3.col-sm-3.col-xs-10
+            .box
+              .card-deck-wrapper
+                .card-deck
+                  .card
+                    .card-img-top.padding-top
+                      =circle_img current_user.avatar.url(:medium),130
+                    .card-block
+                      %h6.card-titleCard.text-center.border-bottom=link_to current_user.name, current_user, class:"no-line"
+                      %table.text-center.text-muted
+                        %tr
+                          %td Posts
+                          %td.padding-left Likes
+                          %td.padding-left Seguidores
+                        %tr
+                          %td=current_user.posts.count
+                          %td=@count_likes
+                          %td=current_user.followers.count
+          .col-xs-12.col-sm-12.col-md-8.col-lg-9
+            .box
+              .white.large-padding.border{style:"margin-bottom: 1em;"}
+                =render "posts/form"
+              #posts
+                .data
+                  =render @posts
+                #pagination
+                  =will_paginate @posts

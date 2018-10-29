@@ -11,11 +11,12 @@
 #
 
 class Friendship < ApplicationRecord
-	include Notificable
+	#include Notificable
 	include AASM
 	belongs_to :user
 	belongs_to :friend, class_name: "User"
 	validates :user_id, uniqueness: { scope: :friend_id, message: "Amistad duplicada" }
+	after_create_commit { NotificationBroadcastJob.perform_later(self) }
 
 	def user_ids
 

@@ -1,0 +1,10 @@
+-comments.each do |comment|
+	%div{:id => "comment-#{comment.id}", style:"font-size: 0.9em;"}
+		%table
+			%tr
+				%td=circle_img comment.user.avatar.url(:thumb),30
+				%td.padding-left{style:"vertical-align: top;"}
+					=link_to comment.user.name, comment.user
+					%table
+						%tr
+							%td=comment.body

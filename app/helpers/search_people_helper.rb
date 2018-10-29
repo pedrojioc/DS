@@ -1,0 +1,2 @@
+module SearchPeopleHelper
+end

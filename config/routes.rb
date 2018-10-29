@@ -1,6 +1,7 @@
 require "sidekiq/web"
 Rails.application.routes.draw do
 
+  #resources :search_suggestions
   resources :likes
   resources :notifications, only: [:index, :update]
   resources :posts
@@ -10,11 +11,15 @@ Rails.application.routes.draw do
     end
   end
   resources :friendships
+  resources :comments
 
   devise_for :users, controllers: {
   	omniauth_callbacks: "users/omniauth_callbacks"
   }
   post "/custom_sign_up", to: "users/omniauth_callbacks#custom_sign_up"
+  get "/search", to: "search_people#search"
+  #Ruta para manejar las sugerencias de busqueda.
+  post "/search_people/search_suggestions", to: "search_people#search_suggestions"
 
 
   authenticated :user do

@@ -1,8 +1,0 @@
-I"¼(function() {
-  $(document).on("page:load page:fetch ready", function() {
-    console.log("It works on each visit!");
-    return $(".best-in-place").best_in_place();
-  });
-
-}).call(this);
-:ET

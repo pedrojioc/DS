@@ -1,67 +1,80 @@
-.row.center-xs
-	.col-xs-12.col-sm-10.col-md-10.col-lg-8
-		.box
-			.white.top-space.relative
-				/contenedor-cover
-				.padding-cover.white-text.text-left.cover.relative#user-cover{style:"background-image:url(#{@user.cover.url(:medium)})"}
-					.absolute{style:"top:6px;right:6px;"}
-						=buttons_image_for_user @user, "btn-user-cover", "user_cover"
-				/contenedor-avater
-				.top-space#user-avatar
-					=circle_img @user.avatar.url(:medium),150
-					.absolute{style:"bottom:6px;right:6px;"}
-						=buttons_image_for_user @user, "btn-user-avatar", "user_avatar"
-				%section.border-bottom.top-space.relative
-					.row.middle-xs.p-1
-						.col-xs-4
-							.box
-								%h1.no-margin.medium.float-xs-left
-									%span= best_in_place_if current_user == @user, @user, :name
-						.col-xs-2
-							.box
-								%b=@user.followers.count
+.profile-header-photo{style:("background-image:url(#{@user.cover.url(:medium)});" if @user.cover_file_name != nil)}
+	.profile-header-photo-in
+		.tbl-cell
+			.info-block
+				.container-fluid
+					.row
+						.col-xs-9.col-xs-offset-3.col-lg-8.col-md-offset-0
+							.tbl.info-tbl
+								.tbl-row
+									.tbl-cell
+										%p.title
+											%span= best_in_place_if current_user == @user, @user, :name
+										%p Founder DS
+									.tbl-cell.tbl-cell-stat
+										.inline-block
+											.title=@count_friends
+											%p=link_to "Amigos", friends_user_path, class:"white-text no-line hover-white"
+									.tbl-cell.tbl-cell-stat
+										.inline-block
+											%p.title=@count_likes
+											%p Likes
+									.tbl-cell.tbl-cell-stat
+										.inline-block
+											%p.title=@user.posts.count
+											%p Posts
+
+	/Boton cover
+	=button_update_cover @user
+/.profile-header-photo
+.invisible
+	=form_for @user, remote: true do |f|
+		= f.file_field :avatar, class:"remotipart"
+	=form_for @user, remote: true do |f|
+		= f.file_field :cover, class:"remotipart"
+
+/Barra lateral izquierda
+.container-fluid
+	.row
+		.col-xs-2.col-lg-3
+			%aside.profile-side
+				%section.box-typical.profile-side-user
+					/%button.avatar-preview.avatar-preview-128{type:"button"}
+					/	=circle_img @user.avatar.url(:medium),150
+					/	%span.update
+					/		%i.fa.fa-picture-o
+					/		Update photo
+					/	%input{type:"file"}
+					=button_update_avatar @user
+					-if @are_friends
+						%button.btn.btn-info{type:"button"} Enviar mensaje
+					.top-space
+					-unless @are_friends
+						=button_to friendships_path(friend_id: @user.id),method: :post,remote: true, :"data-type" => "script", class:"btn btn-outline-info" do
+							Agregar
+					/%button.btn.btn-outline-info Agregarbtn.btn-outline-info
+
+					/.bottom-txt Standing: 154
+				%section.box-typical.profile-side-stat
+					.tbl
+						.tbl-row
+							.tbl-cell
+								%span.number=@user.followers.count
 								Seguidores
-						.col-xs-2
-							.box
-								%b=@user.posts.count
-								Posts
-						.col-xs-2
-							.box
-								%b=link_to "Amigos", friends_user_path, class:""
-
-						.col-xs-4.col-sm-2
-							.box#buttonAdd
-								-unless @are_friends
-									=button_to friendships_path(friend_id: @user.id),method: :post,remote: true, :"data-type" => "script", class:"btn btn-secondary btn-sm" do
-										Agregar
-										%i.fa.fa-user-plus
-
-
-
-		.large-padding
-			.row
-				.col-xs-6.col-md-4.text-left
-					.box
-						%span.text-muted.text-italics= best_in_place_if current_user == @user, @user, :bio
-				.col-xs-2
-					.box
-			.top-space
-				=form_for @user, remote: true do |f|
-					= f.file_field :avatar, class:"remotipart"
-				=form_for @user, remote: true do |f|
-					= f.file_field :cover, class:"remotipart"
-
-
-
-
-
+							.tbl-cell
+								%span.number=@user.followed.count
+								Seguidos
+				%section.box-typical
+					%header.box-typical-header-sm.bordered Estado
+					.box-typical-inner
+						%p
+							%span.text-muted.text-italics= best_in_place_if current_user == @user, @user, :bio
+		.col-xs-10.col-lg-9
+			.box.text-left
+				=render @posts
 
 :javascript
-/	$(document).ready(function () { $(".best-in-place").best_in_place(); });
-/	$( document ).on('turbolinks:load', function() {
-/		console.log("It works on each visit!");
-/		$(".best-in-place").best_in_place();
-/	});
+	$(document).ready(function () { $(".best-in-place").best_in_place(); });
 	$("#btn-user-cover").click(function(){
 		$( "#user_cover" ).click();
 	});

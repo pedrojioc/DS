@@ -9,17 +9,40 @@
             =link_to notifications_path, class:"nav-link", id:"" do
               %i.fa.fa-bell.fa-1x{:"aria-hidden" => :true}
               Notificaciones
-              %span#notification.invisible.tag.tag-danger.my-badge=current_user.unviewed_notifications_count
-          %li.nav-item
+              %span#notification.my-badge.pink{style:("visibility: hidden;" if current_user.unviewed_notifications_count == 0)}=current_user.unviewed_notifications_count
+        %li.nav-item
+          .relative
             =link_to "friendships", class:"nav-link" do
               %i.fa.fa-users.fa-1x{:"aria-hidden" => :true}
               Solicitudes
-          %li.nav-item.dropdown
-            #config-account.nav-link.dropdown-toggle.cover.rounded{:"data-toggle" => :dropdown, :"aria-haspopup" => :true, :"aria-expanded" => :false, style:"background-image: url(#{current_user.avatar.url(:thumb)});width:30px;height:30px;"}
-            %ul.dropdown-menu.dropdown-menu-right{:"aria-labelledby" => :"config-account"}
-              %li.dropdown-item
-                =link_to "Ver mi perfil", current_user, class:"dropdown-item"
-              %li.dropdown-item
-                =link_to "Cerrar sesión", destroy_user_session_path, method: :delete,class:"dropdown-item"
+              %span#friendships.my-badge.pink{style:("visibility: hidden;" if @friend_request == 0)}=@friend_request
+        %li.nav-item
+          .relative
+            =link_to "friendships", class:"nav-link" do
+              %i.fa.fa.fa-inbox.fa-1x{:"aria-hidden" => :true}
+              Mensajes
+              %span#friendships.my-badge.pink{style:("visibility: hidden;" if @friend_request == 0)}=@friend_request
+        %li.nav-item.dropdown
+          #config-account.cover.rounded{:"data-toggle" => :dropdown, :"aria-haspopup" => :true, :"aria-expanded" => :false, style:"background-image: url(#{current_user.avatar.url(:thumb)});width:30px;height:30px;"}
+          .dropdown-menu.dropdown-menu-right.dropdown-nav{:"aria-labelledby" => :"config-account"}
+            =link_to current_user, class:"dropdown-item" do
+              %i.fa.fa-user.font-icon{:"aria-hidden" => :true}
+              Perfil
+            .dropdown-divider
+            =link_to destroy_user_session_path, method: :delete,class:"dropdown-item" do
+              %i.fa.fa-sign-out.font-icon{:"aria-hidden" => :true}
+              Cerrar sesión
 
-                =#link_to current_user.username, current_user, id:"config-account", class:"nav-link dropdown-toggle", :"data-toggle" => :dropdown, :"aria-haspopup" => :true, :"aria-expanded" => :false
+    =form_tag({controller:"search_people", action:"search"}, method:"get", class:"row", id:"form-search") do
+      .col-xs-6.col-sm-7.col-md-8.col-lg-10
+        %table.full-width
+          %tr
+            %td
+              /%input#search.form-control{type:"text", placeholder:"Buscar personas"}
+              =text_field_tag "search", nil, name:"term", class:"form-control", placeholder:"Buscar personas", autocomplete:"off"
+              /Aquí van las sugerencias de busqueda
+              .full-width.relative
+                .list-group.full-width.absolute#result
+            %td
+              %a{href:"javascript:{}", onclick:"document.getElementById('form-search').submit(); return false;"}
+                %i.fa.fa-search.text-white{:"aria-hidden" => :true}

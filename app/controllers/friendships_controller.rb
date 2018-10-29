@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
 	def index
 		@pending_friendships = current_user.followers.pending.decorate
 		#@accepted_friendships = current_user.followers.active.decorate
-		@pending_requests = current_user.friendships.decorate
+		@pending_requests = current_user.friendships.pending.decorate
 	end
 
 	def create

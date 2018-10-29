@@ -5,6 +5,9 @@ class UsuariosController < ApplicationController
 
 	def show
 		@are_friends = current_user.my_friend?(@user)
+		@posts = @user.posts.nuevos.paginate(page:params[:page], per_page:15)
+		@count_likes = User.count_likes_for_user(current_user.id)
+		@count_friends = Friendship.friendships_of_a_user(@user).count
 	end
 
 	def update

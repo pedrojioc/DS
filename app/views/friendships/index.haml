@@ -1,12 +1,16 @@
 .row.center-xs
 	.col-xs-10.col-md-8
 		.box
-			.white.large-padding
-				.border-bottom.padding-bottom
-					%p.text-left Solicitudes de Amistades
+			.card
+				%h4.card-header Solicitudes de amistad
+				.card-block
+					%h5.card-title.text-left Recibidas
 					%ul.list-group
+						-if @pending_friendships.empty?
+							%p.card-text.text-muted No tienes solicitudes de amistad
 						=render @pending_friendships
-				.top-space
-					%p.text-left Solicitudes enviadas
+			.card
+				.card-block			
+					%h5.card-title.text-left Enviadas
 					%ul.list-group
-					=render @pending_requests
+						=render @pending_requests
