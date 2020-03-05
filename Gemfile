@@ -13,6 +13,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+gem "nokogiri", ">= 1.10.8"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -29,14 +30,14 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml-rails'
 gem 'devise', github: "plataformatec/devise"
-gem 'omniauth-facebook'
+gem "omniauth", ">= 1.3.2"
 gem 'jquery-turbolinks', '~> 2.1'
 #Annotate
 gem 'annotate'
 #Best in place for better edit forms
 gem 'best_in_place', '~> 3.0.1'
 #Paperclip para subir archivos
-gem 'paperclip', '~> 5.0.0'
+gem "paperclip", ">= 5.2.0"
 #Remotipart to upload file with AJAX
 gem 'remotipart', github:"urielhdz/remotipart"
 #AASM para state machines
