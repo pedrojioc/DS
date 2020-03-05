@@ -36,7 +36,7 @@ gem 'annotate'
 #Best in place for better edit forms
 gem 'best_in_place', '~> 3.0.1'
 #Paperclip para subir archivos
-gem 'paperclip', '~> 5.0.0'
+gem 'paperclip', '~> 6.1.0'
 #Remotipart to upload file with AJAX
 gem 'remotipart', github:"urielhdz/remotipart"
 #AASM para state machines
